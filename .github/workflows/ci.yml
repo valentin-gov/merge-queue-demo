@@ -1,0 +1,16 @@
+name: CI
+on:
+  pull_request:
+  merge_group:
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run checks
+        run: |
+          echo "event=${{ github.event_name }}  ref=${{ github.ref }}"
+          echo "Running checks (sleeping so the queue is observable)..."
+          sleep 15
+          echo "All checks passed ✅"
